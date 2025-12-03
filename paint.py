@@ -15,10 +15,6 @@ color='black'
 def Test():
     global color
     color= colorchooser.askcolor(title='color')[1]
-    messagebox.showerror('gg')
-    messagebox.showinfo('dialog', 'about car')
-    messagebox.showwarning('show warning', 'flashing')
-    messagebox.showerror('gg', 'answer')
     messagebox.askyesno('yes or no', '6+7=67?')
 
 def paint_draw(event):
