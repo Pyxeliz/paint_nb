@@ -17,6 +17,11 @@ def Test():
     color= colorchooser.askcolor(title='color')[1]
     messagebox.askyesno('yes or no', '6+7=67?')
 
+def save():
+    save_in = filedialog.asksaveasfilename(defaultextension='.*', title='папки', filetypes=[("JPG files","*.jpg"),("PNG files","*.png")],initialdir="/")
+    if save_in:
+        image.save(save_in)
+
 def paint_draw(event):
     x1, y1 = (event.x - 1), (event.y - 1) 
     x2, y2 = (event.x + 1), (event.y + 1)
@@ -31,6 +36,15 @@ def update_canvas_image():
     global canvas_image, photo 
     photo = ImageTk.PhotoImage(image) 
     canvas_image = canvas.create_image(0, 0, image=photo, anchor="nw")
+
+main_menu = tk.Menu(root)
+root.config(menu=main_menu)
+
+file_menu = tk.Menu(main_menu, tearoff=0)
+main_menu.add_cascade(label="file", menu=file_menu)
+#file_menu.add_command(label="new", command="...")
+#file_menu.add_command(label="open", command="...")
+file_menu.add_command(label="save", command=save)
 
 button = tk.Button(root,text='press me',command=Test)
 button.grid(row=0,column=4,padx=10,pady=10)
